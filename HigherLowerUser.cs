@@ -8,22 +8,22 @@ class HigherLowerUser
     private _computerChoice;
     private _userGuess;
 
-    public void SetMax(max)
+    public void SetMax(int max)
     {
         _max = max;
     }
 
-    public void GetMax()
+    public int GetMax()
     {
         return _max;
     }
 
-    public void SetMin(min)
+    public void SetMin(int min)
     {
         _min = min;
     }
 
-    public void GetMin()
+    public int GetMin()
     {
         return _min;
     }
@@ -39,12 +39,33 @@ class HigherLowerUser
     {
         _computerChoice = number;
     }
+
+    public void SetUserGuess(string stringInput)
+    {
+        int intInput = int.Parse(stringInput);
+        _userGuess = intInput;
+    }
+
+    public int GetUserGuess()
+    {
+        return _userGuess;
+    }
+
+    public void PromptUser()
+    {
+        Console.WriteLine("GUESS THE COMPUTER'S NUMBER");
+        Console.WriteLine("Choose a number between " + this.GetMin() + " and " + this.GetMax() + "!");
+        string input = Console.ReadLine();
+    }
 }
 
 public class Program
 {
     public static void Main()
     {
-
+        // make prompt
+        // startGame
+        HigherLowerUser newGame = new HigherLowerUser();
+        newGame.PromptUser();
     }
 }
