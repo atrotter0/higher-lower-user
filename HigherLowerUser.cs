@@ -7,6 +7,7 @@ class HigherLowerUser
     private _min = 1;
     private _computerChoice;
     private _userGuess;
+    private _guessedCorrect = false;
 
     public void SetMax(int max)
     {
@@ -40,6 +41,11 @@ class HigherLowerUser
         _computerChoice = number;
     }
 
+    public void GetComputerChoice()
+    {
+        return _computerChoice;
+    }
+
     public void SetUserGuess(string stringInput)
     {
         int intInput = int.Parse(stringInput);
@@ -51,11 +57,43 @@ class HigherLowerUser
         return _userGuess;
     }
 
+    public void SetGuessedCorrect(bool guess)
+    {
+        _guessedCorrect = guess;
+    }
+
+    public bool GetGuessedCorrect()
+    {
+        return _guessedCorrect;
+    }
+
     public void PromptUser()
     {
         Console.WriteLine("GUESS THE COMPUTER'S NUMBER");
-        Console.WriteLine("Choose a number between " + this.GetMin() + " and " + this.GetMax() + "!");
+        Console.WriteLine("To guess my number, enter a number between " + this.GetMin() + " and " + this.GetMax() + "!");
         string input = Console.ReadLine();
+        this.SetUserGuess(input);
+    }
+
+    public void CheckInput()
+    {
+        if (this.GetUserGuess() == this.GetComputerChoice())
+        {
+            Console.WriteLine(this.GetUserGuess() + " is my number! You guessed right!");
+            this.SetGuessedCorrect(true);
+        }
+        else if (this.GetUserGuess() > this.GetComputerChoice())
+        {
+            Console.WriteLine("Your guess is too high... go lower!");
+        }
+        else if (this.GetUserGuess() < this.GetComputerChoice())
+        {
+            Console.WriteLine("Your guess is too low... go higher!");
+        }
+        else
+        {
+            Console.WriteLine("I have no idea what you mean...");
+        }
     }
 }
 
@@ -64,6 +102,11 @@ public class Program
     public static void Main()
     {
         HigherLowerUser newGame = new HigherLowerUser();
-        newGame.PromptUser();
+        
+        while(!newGame.GetGuessedCorrect())
+        {
+            newGame.PromptUser();
+            newGame.CheckInput();
+        }
     }
 }
