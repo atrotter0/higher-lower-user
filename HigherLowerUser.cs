@@ -31,9 +31,9 @@ class HigherLowerUser
 
     public void CreateComputerChoice()
     {
-        Random randomNumber = new Random();
-        randomNumber.next(1, 101);
-        this.SetComputerChoice(randomNumber);
+        Random numberGenerator = new Random();
+        int number = numberGenerator.Next(1, 101);
+        this.SetComputerChoice(number);
     }
 
     public void SetComputerChoice(int number)
@@ -41,7 +41,7 @@ class HigherLowerUser
         _computerChoice = number;
     }
 
-    public void GetComputerChoice()
+    public int GetComputerChoice()
     {
         return _computerChoice;
     }
@@ -102,6 +102,7 @@ public class Program
     public static void Main()
     {
         HigherLowerUser newGame = new HigherLowerUser();
+        newGame.CreateComputerChoice();
         
         while(!newGame.GetGuessedCorrect())
         {
