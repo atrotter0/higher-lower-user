@@ -67,6 +67,15 @@ class HigherLowerUser
         return _guessedCorrect;
     }
 
+    public void RunGame()
+    {
+        while(!this.GetGuessedCorrect())
+        {
+            this.PromptUser();
+            this.CheckInput();
+        }
+    }
+
     public void PromptUser()
     {
         Console.WriteLine("GUESS THE COMPUTER'S NUMBER");
@@ -103,11 +112,6 @@ public class Program
     {
         HigherLowerUser newGame = new HigherLowerUser();
         newGame.CreateComputerChoice();
-        
-        while(!newGame.GetGuessedCorrect())
-        {
-            newGame.PromptUser();
-            newGame.CheckInput();
-        }
+        newGame.RunGame();
     }
 }
