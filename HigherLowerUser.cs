@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 class HigherLowerUser
 {
-    private _max = 100;
-    private _min = 1;
-    private _computerChoice;
-    private _userGuess;
-    private _guessedCorrect = false;
+    private int _max = 100;
+    private int _min = 1;
+    private int _computerChoice;
+    private int _userGuess;
+    private bool _guessedCorrect = false;
 
     public void SetMax(int max)
     {
