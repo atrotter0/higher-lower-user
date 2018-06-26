@@ -63,8 +63,6 @@ public class Program
 {
     public static void Main()
     {
-        // make prompt
-        // startGame
         HigherLowerUser newGame = new HigherLowerUser();
         newGame.PromptUser();
     }
